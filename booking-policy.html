@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trip Booking Policy</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --brand: #2563eb;
+      --brand-600: #1d4ed8;
+      --ink: #0b1220;
+      --text: #374151;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --chip: #eef2ff;
+      --ring: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: #f7f8fb;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background: linear-gradient(180deg, var(--bg), #111827);
+      color: #fff;
+    }
+
+    .main-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 24px;
+    } 
+
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      margin-right: 16px;
+      flex-shrink: 0;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .1);
+      backdrop-filter: blur(4px);
+      font-size: 14px;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .print-btn {
+      border: 0;
+      border-radius: 10px;
+      background: var(--brand);
+      color: #fff;
+      padding: 10px 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .print-btn:hover {
+      background: var(--brand-600);
+    }
+
+    @media print {
+
+      .print-btn,
+      .footer-links {
+        display: none;
+      }
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 28px 20px;
+    }
+
+    .policy-section {
+      background: var(--card);
+      border: 1px solid var(--ring);
+      border-radius: 16px;
+      padding: 22px 20px;
+      margin: 14px 0;
+      box-shadow: 0 6px 16px rgba(10, 20, 40, .04);
+    }
+
+    .policy-section h2 {
+      color: var(--ink);
+      margin: 0 0 10px;
+      border-left: 4px solid var(--brand);
+      padding-left: 10px;
+      font-size: clamp(18px, 2.6vw, 22px);
+    }
+
+    p {
+      margin: 10px 0;
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    ul {
+      margin: 8px 0 6px 22px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    footer {
+      background: #111827;
+      color: #cbd5e1;
+      margin-top: 24px;
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 18px 20px;
+      text-align: center;
+    }
+
+    .footer-links a {
+      color: #93c5fd;
+      margin: 0 10px;
+    }
+
+    .last-update {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="main-container">
+      <div class="brand-area">
+        <img src="./ExploreUP/photo/UP.jpg" alt="Know UP Logo" class="logo" />
+        <div>
+          <h1>Know UP — Trip Booking Policy</h1>
+          <div class="subtitle">Please read these terms carefully before making a booking.</div>
+        </div>
+      </div>
+      <div class="contact-info" aria-label="Contact information">
+        <div class="pill">📧 <a href="mailto:Knowup65@gmail.com" style="color:#fff">Knowup65@gmail.com</a></div>
+        <div class="pill">☎ 9876543211</div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+      </div>
+    </div>
+
+  </header>
+  <main>
+    <p class="last-update">📅 Last updated: August 23, 2025</p>
+    <section id="intro" class="policy-section">
+      <h2>1) Introduction</h2>
+      <p>Welcome to <strong>Know UP</strong>, your trusted travel partner for city trips and complete packages across
+        India. By booking a trip with us, you agree to the terms and conditions set out in this policy.</p>
+    </section>
+    <section id="booking-terms" class="policy-section">
+      <h2>2) Booking Terms</h2>
+      <ul>
+        <li>Bookings are available for <strong>individual city trips</strong> as well as <strong>complete
+            packages</strong>.</li>
+        <li>Each booking is limited to a maximum of <strong>4 adults and 3 children</strong>.</li>
+        <li>All bookings are subject to availability and will remain <strong>pending</strong> until full payment is
+          received. Only after successful payment will the booking be treated as <strong>confirmed</strong>.</li>
+        <li>Any special requests must be shared in advance and are subject to availability.</li>
+      </ul>
+    </section>
+
+    <section id="payments" class="policy-section">
+      <h2>3) Payment Policy</h2>
+      <ul>
+        <li>Payments are accepted in <b>INR</b> through online methods (UPI, cards, net banking, wallets). Users can
+          also scan the QR code to pay and wait for confirmation. We also provide an on-call booking service for added
+          convenience.</li>
+        <li><strong>Offline payments at the destination are not allowed.</strong></li>
+        <li>Partial payments are not accepted — <strong>full payment</strong> is required at the time of booking.</li>
+        <li>Failed or incomplete payments will keep the booking in <strong>pending status</strong> until cleared.</li>
+      </ul>
+    </section>
+
+    <section id="refunds" class="policy-section">
+      <h2>4) Cancellation &amp; Refund Policy</h2>
+      <p>Once a booking is confirmed, <strong>no refunds</strong> will be provided under any circumstance. This includes
+        customer cancellations, last‑minute changes, no‑shows, or any unutilized services. If Know UP cancels a trip and
+        cannot offer an alternative date, a <strong>credit note</strong> may be issued for future travel.</p>
+    </section>
+
+    <section id="reschedule" class="policy-section">
+      <h2>5) Rescheduling</h2>
+      <p>If a trip is impacted due to <strong>weather</strong> or <strong>safety</strong> concerns, Know UP may
+        <strong>postpone</strong> the trip and share the revised date within <strong>7 working days</strong>. Customers
+        will be notified via their registered email or phone number.
+      </p>
+    </section>
+
+    <section id="inclusions" class="policy-section">
+      <h2>6) Inclusions &amp; Exclusions</h2>
+      <ul>
+        <li>The package price includes <strong>meals, beverages, and stay arrangements</strong> during the trip.</li>
+        <li>Know UP covers essential trip needs within the package. If customers opt to use <strong>third‑party
+            services</strong> outside the package (e.g., external restaurants, activities, or transport), it is purely
+          at their own discretion and expense. Know UP is not responsible for such services.</li>
+      </ul>
+    </section>
+
+    <section id="responsibilities" class="policy-section">
+      <h2>7) Traveler Responsibilities</h2>
+      <ul>
+        <li>Carry a valid <strong>Government‑issued photo ID</strong> (Aadhaar, Passport, Driving License, etc.).</li>
+        <li>Foreign nationals must carry a valid <strong>Passport and Visa</strong>.</li>
+        <li>Parents/guardians are fully responsible for accompanying minors.</li>
+        <li>Customers are responsible for their belongings; Know UP is not liable for lost or stolen items.</li>
+      </ul>
+    </section>
+
+    <section id="health-safety" class="policy-section">
+      <h2>8) Health &amp; Safety Rules</h2>
+      <ul>
+        <li>Trips may require basic fitness; please disclose relevant medical conditions in advance.</li>
+        <li>Carry prescribed medicines and inform the guide of any health concerns.</li>
+        <li>Use the safety equipment provided as instructed.</li>
+        <li><strong>If children are part of the trip, alcohol and drugs are strictly prohibited.</strong></li>
+      </ul>
+    </section>
+
+    <section id="conduct" class="policy-section">
+      <h2>9) Code of Conduct</h2>
+      <ul>
+        <li>Respect local culture, environment, and fellow participants.</li>
+        <li>Offensive or disruptive behavior may lead to removal from the trip without refund; fines may be levied where
+          applicable.</li>
+        <li>Any vandalism or damage to property will be the traveler's responsibility.</li>
+      </ul>
+    </section>
+
+    <section id="pets-access" class="policy-section">
+      <h2>10) Pets &amp; Accessibility</h2>
+      <ul>
+        <li>Pets are allowed as long as they do not pose a <strong>threat to local people or communities</strong>.</li>
+        <li>For wheelchair or other accessibility support, please inform Know UP in advance.</li>
+      </ul>
+    </section>
+
+    <section id="force-majeure" class="policy-section">
+      <h2>11) Force Majeure</h2>
+      <p>Due to natural calamities, strikes, political unrest, or adverse weather, Know UP may modify, postpone, or
+        cancel the trip. Customers will be offered a rescheduled date or a credit note for future use.</p>
+    </section>
+
+    <section id="insurance-liability" class="policy-section">
+      <h2>12) Insurance &amp; Liability</h2>
+      <ul>
+        <li>Know UP provides <strong>basic insurance coverage</strong> for unfortunate events arising from
+          company‑related arrangements.</li>
+        <li>Additional travel and medical insurance is <strong>highly recommended</strong> for complete protection.</li>
+        <li>Know UP is not responsible for accidents, injuries, or losses during <strong>third‑party services</strong>
+          (transport, hotels, activities) selected by the customer.</li>
+      </ul>
+    </section>
+
+    <section id="media-comms" class="policy-section">
+      <h2>13) Media &amp; Communications</h2>
+      <ul>
+        <li>By booking, customers agree to receive trip‑related updates via <strong>email, SMS, or WhatsApp</strong>.
+        </li>
+        <li>During trips, photos and videos will be taken <strong>only after explicit customer consent</strong>. If a
+          customer is not comfortable, no photos/videos will be captured.</li>
+      </ul>
+    </section>
+
+    <section id="complaints-legal" class="policy-section">
+      <h2>14) Complaints &amp; Disputes</h2>
+      <ul>
+        <li>Complaints can be raised during the trip or within <strong>7 days (1 week)</strong> of trip completion via
+          email.</li>
+        <li>All disputes are governed by <strong>Indian Law</strong> under the jurisdiction of courts in
+          <strong>Varanasi, India</strong>.
+        </li>
+      </ul>
+    </section>
+
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="mailto:Knowup65@gmail.com">Contact</a>
+      </div>
+      <div style="margin-top:8px">© 2025 Know UP. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+
+</html>

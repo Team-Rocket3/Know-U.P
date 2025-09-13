@@ -1,0 +1,1424 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festival & Event Calendar - Know UP</title>
+    <link rel="icon" href="../photo/taj-mahal.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2563eb;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --bg-light: #e0e2e4;
+    --bg-white: #eeeded;
+    --border-color: #e5e7eb;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --festival-religious: #8b5cf6;
+    --festival-cultural: #06d6a0;
+    --festival-seasonal: #f72585;
+    --festival-government: #4cc9f0;
+    --festival-regional: #ff9f43;
+    --festival-music: #a78bfa;
+    --festival-art: #34d399;
+}
+
+[data-theme="dark"] {
+    --text-dark: #f9fafb;
+    --text-light: #d1d5db;
+    --bg-light: #111827;
+    --bg-white: #1f2937;
+    --border-color: #374151;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    transition: all 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+    background: var(--bg-white);
+    box-shadow: var(--shadow);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 32px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 24px;
+    align-items: center;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+    font-size: 14px;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: var(--primary-color);
+}
+
+.nav-menu a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary-color);
+}
+
+.theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: var(--bg-light);
+}
+
+.profile-icon {
+    font-size: 32px;
+    color: var(--primary-color);
+    margin-left: 16px;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url('../photo/Festival events.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    padding: 120px 20px 80px;
+    text-align: center;
+    margin-top: 70px;
+    position: relative;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    z-index: 2;
+    position: relative;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.title {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-transform: none;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 18px;
+    opacity: 0.95;
+    margin-bottom: 50px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+
+/* Filter Section */
+.filter-section {
+    padding: 30px 0;
+    background: var(--bg-white);
+}
+
+.filter-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 14px 10px 40px;
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.search-box i {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: 2px solid var(--border-color);
+    background: var(--bg-light);
+    color: var(--text-dark);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Calendar Button */
+.calendar-btn-section {
+    padding: 15px 0;
+    background: var(--bg-light);
+    text-align: center;
+}
+
+.calendar-btn {
+    background: linear-gradient(135deg, #3b82f6, #041223);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+.calendar-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* List View */
+.list-section {
+    padding: 30px 0;
+}
+
+.festivals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.festival-card {
+    background: var(--bg-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.festival-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.festival-card-header {
+    padding: 16px;
+    position: relative;
+}
+
+.festival-category {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.festival-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: var(--text-dark);
+}
+
+.festival-date {
+    color: var(--text-light);
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.festival-location {
+    color: var(--text-light);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.festival-description {
+    padding: 0 16px 16px;
+    color: var(--text-light);
+    line-height: 1.4;
+    font-size: 14px;
+}
+
+/* Popup Calendar Styles */
+.calendar-popup {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+.calendar-popup-content {
+    background-color: var(--bg-white);
+    margin: 3% auto;
+    padding: 24px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 900px;
+    position: relative;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.calendar-container {
+    max-width: 100%;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.nav-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.nav-btn:hover {
+    background: #1d4ed8;
+    transform: scale(1.05);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.calendar-day {
+    background: var(--bg-white);
+    padding: 8px 6px;
+    min-height: 70px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.calendar-day:hover {
+    background: var(--bg-light);
+}
+
+.calendar-day-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 6px;
+    text-align: center;
+    font-weight: bold;
+    min-height: auto;
+    font-size: 12px;
+}
+
+.calendar-day-number {
+    font-weight: bold;
+    margin-bottom: 3px;
+    color: var(--text-dark);
+    font-size: 14px;
+}
+
+.other-month {
+    opacity: 0.3;
+}
+
+.today {
+    background: rgba(37, 99, 235, 0.1);
+}
+
+.festival-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin: 1px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.festival-religious { background: var(--festival-religious); }
+.festival-cultural { background: var(--festival-cultural); }
+.festival-seasonal { background: var(--festival-seasonal); }
+.festival-government { background: var(--festival-government); }
+.festival-kumbh { background: var(--festival-kumbh); }
+.festival-regional { background: var(--festival-regional); }
+.festival-music { background: var(--festival-music); }
+.festival-art { background: var(--festival-art); }
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+.modal-content {
+    background-color: var(--bg-white);
+    margin: 5% auto;
+    padding: 24px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    color: var(--text-light);
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #f00;
+}
+
+/* Simple Footer */
+.footer {
+    background:rgb(31, 30, 30);
+    color: rgb(217, 215, 215);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav {
+        padding: 12px 16px;
+    }
+
+    .nav-menu {
+        gap: 16px;
+    }
+
+    .nav-menu a {
+        font-size: 12px;
+    }
+
+    .title {
+        font-size: 36px;
+        letter-spacing: 1px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+        margin-bottom: 35px;
+    }
+
+    .hero {
+        height: 60vh;
+        padding: 100px 15px 60px;
+    }
+
+    .hero-search-box {
+        flex-direction: column;
+        border-radius: 15px;
+    }
+
+    .hero-search-box input {
+        border-radius: 15px 15px 0 0;
+    }
+
+    .hero-search-btn {
+        border-radius: 0 0 15px 15px;
+        justify-content: center;
+    }
+
+    .filter-controls {
+        align-items: stretch;
+    }
+
+    .filter-buttons {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 8px 0;
+    }
+
+    .calendar-day {
+        min-height: 60px;
+        padding: 6px 4px;
+    }
+
+    .festival-card {
+        margin: 0 8px;
+    }
+
+    .calendar-popup-content {
+        width: 95%;
+        padding: 16px;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.festival-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+               <div class="nav-brand">
+        <h1>Know-U.P</h1>
+      </div>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../index.html#cities">Cities</a></li>
+                    <li><a href="../../index.html#packages">Packages</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="festival-calendar.html" class="active">Festival Calendar</a></li>
+                </ul>
+                <a href="../../fiels/profile.php" id="profileIcon" class="profile-icon">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="title">Festival & Event Calendar</h1>
+            <p class="subtitle">Discover the vibrant festivals and cultural events of Uttar Pradesh</p>
+
+        </div>
+    </section>
+
+    <!-- Festival Search and Filter -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-controls">
+                <div class="search-box">
+                    <input type="text" id="festivalSearch" placeholder="Search festivals..." onkeyup="searchFestivals()">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" onclick="filterFestivals('all', event)">All</button>
+                    <button class="filter-btn" onclick="filterFestivals('religious', event)">Religious</button>
+                    <button class="filter-btn" onclick="filterFestivals('cultural', event)">Cultural</button>
+                    <button class="filter-btn" onclick="filterFestivals('seasonal', event)">Seasonal</button>
+                    <button class="filter-btn" onclick="filterFestivals('government', event)">Government</button>
+                    <button class="filter-btn" onclick="filterFestivals('regional', event)">Regional</button>
+                    <button class="filter-btn" onclick="filterFestivals('music', event)">Music</button>
+                    <button class="filter-btn" onclick="filterFestivals('art', event)">Art</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Button -->
+    <section class="calendar-btn-section">
+        <div class="container">
+            <button class="calendar-btn" onclick="showCalendarPopup()">
+                <i class="fas fa-calendar-alt"></i> View Festival Calendar
+            </button>
+        </div>
+    </section>
+
+    <!-- List View -->
+    <section id="list-view" class="list-section">
+        <div class="container">
+            <div id="festivals-list" class="festivals-grid">
+                <!-- Festival cards will be generated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Popup -->
+    <div id="calendar-popup" class="calendar-popup">
+        <div class="calendar-popup-content">
+            <span class="close" onclick="closeCalendarPopup()">&times;</span>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button class="nav-btn" onclick="changeMonth(-1)"><i class="fas fa-chevron-left"></i></button>
+                    <h2 id="current-month"></h2>
+                    <button class="nav-btn" onclick="changeMonth(1)"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-grid" id="calendar-grid">
+                    <!-- Calendar will be generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Festival Details Modal -->
+    <div id="festival-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeFestivalModal()">&times;</span>
+            <div id="festival-details">
+                <!-- Festival details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Simple Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Know UP - Festival Calendar</p>
+        </div>
+    </footer>
+
+    <script>
+
+const festivalsData = [
+    {
+        id: 1,
+        name: "Kumbh Mela",
+        category: "religious",
+        date: "2025-01-13",
+        endDate: "2025-02-26",
+        location: "Prayagraj (Allahabad)",
+        description: "World's largest religious gathering held every 12 years. Millions of devotees take holy dip at Triveni Sangam.",
+        significance: "Major Hindu pilgrimage",
+        duration: "45 days"
+    },
+    {
+        id: 2,
+        name: "Holi",
+        category: "religious",
+        date: "2025-03-14",
+        location: "Mathura, Vrindavan, Barsana",
+        description: "Festival of colors celebrating the victory of good over evil. Famous Lathmar Holi in Barsana.",
+        significance: "Spring festival",
+        duration: "3 days"
+    },
+    {
+        id: 3,
+        name: "Ram Navami",
+        category: "religious",
+        date: "2025-04-06",
+        location: "Ayodhya",
+        description: "Celebrates the birth of Lord Rama. Grand celebrations in his birthplace Ayodhya.",
+        significance: "Birth of Lord Rama",
+        duration: "2 days"
+    },
+    {
+        id: 4,
+        name: "Taj Mahotsav",
+        category: "cultural",
+        date: "2025-02-18",
+        endDate: "2025-02-27",
+        location: "Agra",
+        description: "10-day cultural festival showcasing arts, crafts, cuisine, and cultural performances near Taj Mahal.",
+        significance: "Cultural celebration",
+        duration: "10 days"
+    },
+    {
+        id: 5,
+        name: "Diwali",
+        category: "religious",
+        date: "2025-10-20",
+        location: "Ayodhya, Varanasi",
+        description: "Festival of lights. Ayodhya creates world records with millions of earthen lamps.",
+        significance: "Festival of lights",
+        duration: "3 days"
+    },
+    {
+        id: 6,
+        name: "Krishna Janmashtami",
+        category: "religious",
+        date: "2025-08-16",
+        location: "Mathura, Vrindavan",
+        description: "Celebrates the birth of Lord Krishna with Rasa Lila performances and midnight celebrations.",
+        significance: "Birth of Lord Krishna",
+        duration: "2 days"
+    },
+    {
+        id: 7,
+        name: "Ganga Mahotsav",
+        category: "cultural",
+        date: "2025-11-05",
+        endDate: "2025-11-09",
+        location: "Varanasi",
+        description: "5-day festival celebrating River Ganga with classical music, dance, and cultural programs.",
+        significance: "River Ganga celebration",
+        duration: "5 days"
+    },
+    {
+        id: 8,
+        name: "Lucknow Mahotsav",
+        category: "cultural",
+        date: "2025-11-25",
+        endDate: "2025-12-10",
+        location: "Lucknow",
+        description: "Showcases Nawabi culture, cuisine, crafts, and performing arts of Awadh region.",
+        significance: "Nawabi culture",
+        duration: "16 days"
+    },
+    {
+        id: 9,
+        name: "Dev Deepavali",
+        category: "religious",
+        date: "2025-11-05",
+        location: "Varanasi",
+        description: "Festival of lights on the ghats of Varanasi. Thousands of diyas illuminate the sacred ghats.",
+        significance: "Gods' Diwali",
+        duration: "2 days"
+    },
+    {
+        id: 10,
+        name: "Sarnath Festival",
+        category: "religious",
+        date: "2025-05-12",
+        location: "Sarnath (near Varanasi)",
+        description: "Buddha Purnima celebrations at the place where Buddha gave his first sermon.",
+        significance: "Buddha's first sermon",
+        duration: "3 days"
+    },
+    {
+        id: 11,
+        name: "Dussehra",
+        category: "religious",
+        date: "2025-10-02",
+        location: "Varanasi, Lucknow",
+        description: "Victory of good over evil. Grand Ram Lila performances and Ravana effigy burning.",
+        significance: "Victory of good over evil",
+        duration: "3 days"
+    },
+    {
+        id: 12,
+        name: "Bateshwar Fair",
+        category: "cultural",
+        date: "2025-10-15",
+        endDate: "2025-11-15",
+        location: "Bateshwar (Agra)",
+        description: "Month-long cattle fair and cultural event with traditional folk performances.",
+        significance: "Traditional cattle fair",
+        duration: "30 days"
+    },
+    {
+        id: 13,
+        name: "Makar Sankranti",
+        category: "seasonal",
+        date: "2025-01-14",
+        location: "Prayagraj, Varanasi",
+        description: "Harvest festival celebrated with kite flying and holy baths in sacred rivers.",
+        significance: "Harvest celebration",
+        duration: "1 day"
+    },
+    {
+        id: 14,
+        name: "Shivratri",
+        category: "religious",
+        date: "2025-02-26",
+        location: "Varanasi, Ayodhya",
+        description: "Night-long celebrations dedicated to Lord Shiva with prayers and fasting.",
+        significance: "Lord Shiva worship",
+        duration: "1 day"
+    },
+    {
+        id: 15,
+        name: "Karva Chauth",
+        category: "cultural",
+        date: "2025-10-20",
+        location: "All major cities",
+        description: "Traditional festival where married women fast for their husbands' long life.",
+        significance: "Marital celebration",
+        duration: "1 day"
+    },
+    {
+        id: 16,
+        name: "Dahi Handi",
+        category: "cultural",
+        date: "2025-08-17",
+        location: "Mathura, Aligarh",
+        description: "Festival celebrating Krishna's childhood with human pyramids to break pots of curd.",
+        significance: "Krishna's playfulness",
+        duration: "1 day"
+    },
+    {
+        id: 17,
+        name: "Teej",
+        category: "seasonal",
+        date: "2025-08-07",
+        location: "Lucknow, Kanpur",
+        description: "Monsoon festival celebrated by women with swings, songs, and traditional foods.",
+        significance: "Monsoon celebration",
+        duration: "1 day"
+    },
+    {
+        id: 18,
+        name: "Raksha Bandhan",
+        category: "cultural",
+        date: "2025-08-09",
+        location: "All cities",
+        description: "Festival celebrating the bond between brothers and sisters with rakhi tying ceremony.",
+        significance: "Sibling bond",
+        duration: "1 day"
+    },
+    {
+        id: 19,
+        name: "Bhai Dooj",
+        category: "cultural",
+        date: "2025-11-03",
+        location: "All cities",
+        description: "Festival where sisters pray for their brothers' well-being and apply tilaka.",
+        significance: "Brother-sister bond",
+        duration: "1 day"
+    },
+    {
+        id: 20,
+        name: "Ganga Aarti",
+        category: "religious",
+        date: "2025-12-31",
+        location: "Varanasi, Haridwar",
+        description: "Daily evening prayer ceremony at the ghats with fire lamps and chanting.",
+        significance: "River worship",
+        duration: "Daily event"
+    },
+    {
+        id: 21,
+        name: "Republic Day",
+        category: "government",
+        date: "2025-01-26",
+        location: "Lucknow, All districts",
+        description: "National holiday celebrating the adoption of Indian Constitution with parades.",
+        significance: "Constitutional celebration",
+        duration: "1 day"
+    },
+    {
+        id: 22,
+        name: "Independence Day",
+        category: "government",
+        date: "2025-08-15",
+        location: "All cities",
+        description: "National holiday celebrating India's independence with flag hoisting ceremonies.",
+        significance: "Freedom celebration",
+        duration: "1 day"
+    },
+    {
+        id: 23,
+        name: "Gandhi Jayanti",
+        category: "government",
+        date: "2025-10-02",
+        location: "All cities",
+        description: "Birth anniversary of Mahatma Gandhi celebrated with prayers and cultural programs.",
+        significance: "Gandhi's birth",
+        duration: "1 day"
+    },
+    {
+        id: 24,
+        name: "Chhath Puja",
+        category: "religious",
+        date: "2025-11-07",
+        location: "Eastern UP, Varanasi",
+        description: "Four-day festival dedicated to Sun God with river worship and offerings.",
+        significance: "Sun worship",
+        duration: "4 days"
+    },
+    // Additional festivals and events
+    {
+        id: 25,
+        name: "Vrindavan Holi",
+        category: "religious",
+        date: "2025-03-13",
+        location: "Vrindavan",
+        description: "Traditional Holi celebration in Krishna's birthplace with flower petals and colors.",
+        significance: "Krishna's Holi",
+        duration: "2 days"
+    },
+    {
+        id: 26,
+        name: "Khajuraho Dance Festival",
+        category: "art",
+        date: "2025-02-25",
+        endDate: "2025-03-01",
+        location: "Khajuraho",
+        description: "Classical dance festival featuring renowned artists performing against temple backdrop.",
+        significance: "Cultural heritage",
+        duration: "5 days"
+    },
+    {
+        id: 27,
+        name: "Varanasi Music Festival",
+        category: "music",
+        date: "2025-03-15",
+        endDate: "2025-03-20",
+        location: "Varanasi",
+        description: "Classical music festival featuring maestros of Hindustani music.",
+        significance: "Musical tradition",
+        duration: "6 days"
+    },
+    {
+        id: 28,
+        name: "Ayodhya Deepotsav",
+        category: "religious",
+        date: "2025-10-31",
+        location: "Ayodhya",
+        description: "Grand celebration of Diwali with millions of diyas lighting up the Ram Janmabhoomi.",
+        significance: "Ram's return",
+        duration: "1 day"
+    },
+    {
+        id: 29,
+        name: "Mathura Janmashtami",
+        category: "religious",
+        date: "2025-08-16",
+        location: "Mathura",
+        description: "Elaborate celebrations at Krishna's birthplace with jhankis and cultural programs.",
+        significance: "Krishna's birth",
+        duration: "3 days"
+    },
+    {
+        id: 30,
+        name: "Allahabad Literature Festival",
+        category: "cultural",
+        date: "2025-01-15",
+        endDate: "2025-01-17",
+        location: "Prayagraj",
+        description: "Literary festival featuring authors, poets, and cultural discussions.",
+        significance: "Literary celebration",
+        duration: "3 days"
+    },
+    {
+        id: 31,
+        name: "Kashi Vishwanath Aarti",
+        category: "religious",
+        date: "2025-07-15",
+        location: "Varanasi",
+        description: "Special evening aarti at the famous Kashi Vishwanath temple.",
+        significance: "Shiva worship",
+        duration: "1 day"
+    },
+    {
+        id: 32,
+        name: "Gorakhpur Geeta Mahotsav",
+        category: "religious",
+        date: "2025-12-25",
+        endDate: "2025-12-27",
+        location: "Gorakhpur",
+        description: "Festival celebrating the teachings of Bhagavad Gita with discourse and cultural programs.",
+        significance: "Spiritual learning",
+        duration: "3 days"
+    },
+    {
+        id: 33,
+        name: "Braj Holi Festival",
+        category: "regional",
+        date: "2025-03-10",
+        endDate: "2025-03-14",
+        location: "Braj region",
+        description: "Week-long Holi celebrations across Braj region including Mathura, Vrindavan, and Gokul.",
+        significance: "Regional celebration",
+        duration: "5 days"
+    },
+    {
+        id: 34,
+        name: "Aligarh Cultural Festival",
+        category: "cultural",
+        date: "2025-04-20",
+        endDate: "2025-04-23",
+        location: "Aligarh",
+        description: "Cultural festival showcasing local arts, crafts, and traditions of western UP.",
+        significance: "Regional culture",
+        duration: "4 days"
+    },
+    {
+        id: 35,
+        name: "Kanpur Flower Show",
+        category: "seasonal",
+        date: "2025-01-05",
+        endDate: "2025-01-10",
+        location: "Kanpur",
+        description: "Annual flower exhibition featuring rare flowers and gardening displays.",
+        significance: "Floral celebration",
+        duration: "6 days"
+    },
+    {
+        id: 36,
+        name: "Meerut Sports Festival",
+        category: "cultural",
+        date: "2025-03-25",
+        endDate: "2025-03-30",
+        location: "Meerut",
+        description: "Multi-sport festival promoting traditional and modern sports in western UP.",
+        significance: "Sports promotion",
+        duration: "6 days"
+    },
+    {
+        id: 37,
+        name: "Bareilly Urs Festival",
+        category: "religious",
+        date: "2025-04-15",
+        endDate: "2025-04-17",
+        location: "Bareilly",
+        description: "Annual Urs celebration at the dargah of Ala Hazrat with qawwali and prayers.",
+        significance: "Sufi tradition",
+        duration: "3 days"
+    },
+    {
+        id: 38,
+        name: "Chitrakoot Parikrama",
+        category: "religious",
+        date: "2025-11-20",
+        location: "Chitrakoot",
+        description: "Sacred walk around Chitrakoot, associated with Lord Rama's exile period.",
+        significance: "Pilgrimage",
+        duration: "1 day"
+    },
+    {
+        id: 39,
+        name: "Faizabad Craft Mela",
+        category: "art",
+        date: "2025-02-10",
+        endDate: "2025-02-15",
+        location: "Faizabad",
+        description: "Craft fair showcasing traditional handicrafts and artisan skills of Awadh region.",
+        significance: "Artisan promotion",
+        duration: "6 days"
+    },
+    {
+        id: 40,
+        name: "Jhansi Rani Festival",
+        category: "regional",
+        date: "2025-03-08",
+        location: "Jhansi",
+        description: "Celebration honoring Rani Laxmibai with cultural programs and historical reenactments.",
+        significance: "Historical tribute",
+        duration: "1 day"
+    }
+];
+
+let currentDate = new Date();
+let currentFilter = 'all';
+
+document.addEventListener('DOMContentLoaded', function() {
+    initializeTheme();
+    generateFestivalsList();
+    updateCurrentMonthDisplay();
+});
+function toggleTheme() {
+    const body = document.body;
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+
+    const themeIcon = document.querySelector('.theme-toggle i');
+    themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+}
+
+function initializeTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.body.setAttribute('data-theme', savedTheme);
+
+    const themeIcon = document.querySelector('.theme-toggle i');
+    themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+}
+
+// Calendar popup functions
+function showCalendarPopup() {
+    document.getElementById('calendar-popup').style.display = 'block';
+    generateCalendar();
+}
+
+function closeCalendarPopup() {
+    document.getElementById('calendar-popup').style.display = 'none';
+}
+
+// Calendar generation
+function generateCalendar() {
+    const calendarGrid = document.getElementById('calendar-grid');
+    calendarGrid.innerHTML = '';
+
+    // Add day headers
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    days.forEach(day => {
+        const dayHeader = document.createElement('div');
+        dayHeader.className = 'calendar-day calendar-day-header';
+        dayHeader.textContent = day;
+        calendarGrid.appendChild(dayHeader);
+    });
+
+    // Get first day of month and number of days
+    const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+    const startDate = new Date(firstDay);
+    startDate.setDate(startDate.getDate() - firstDay.getDay());
+
+    // Generate calendar days
+    for (let i = 0; i < 42; i++) {
+        const date = new Date(startDate);
+        date.setDate(startDate.getDate() + i);
+
+        const dayElement = document.createElement('div');
+        dayElement.className = 'calendar-day';
+
+        if (date.getMonth() !== currentDate.getMonth()) {
+            dayElement.classList.add('other-month');
+        }
+
+        if (isToday(date)) {
+            dayElement.classList.add('today');
+        }
+
+        const dayNumber = document.createElement('div');
+        dayNumber.className = 'calendar-day-number';
+        dayNumber.textContent = date.getDate();
+        dayElement.appendChild(dayNumber);
+
+        // Add festival indicators (only colors)
+        const dayFestivals = getFestivalsForDate(date);
+        dayFestivals.forEach(festival => {
+            const indicator = document.createElement('div');
+            indicator.className = `festival-indicator festival-${festival.category}`;
+            indicator.title = festival.name;
+            indicator.onclick = () => showFestivalDetails(festival);
+            dayElement.appendChild(indicator);
+        });
+
+        calendarGrid.appendChild(dayElement);
+    }
+}
+
+function updateCurrentMonthDisplay() {
+    const monthNames = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    document.getElementById('current-month').textContent = 
+        `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+}
+
+function changeMonth(direction) {
+    currentDate.setMonth(currentDate.getMonth() + direction);
+    generateCalendar();
+    updateCurrentMonthDisplay();
+}
+
+function isToday(date) {
+    const today = new Date();
+    return date.toDateString() === today.toDateString();
+}
+
+function getFestivalsForDate(date) {
+    const dateString = date.toISOString().split('T')[0];
+    return festivalsData.filter(festival => {
+        if (currentFilter !== 'all' && festival.category !== currentFilter) {
+            return false;
+        }
+        if (festival.endDate) {
+            return dateString >= festival.date && dateString <= festival.endDate;
+        }
+        return festival.date === dateString;
+    });
+}
+
+// Festival filtering
+function filterFestivals(category, event) {
+    currentFilter = category;
+
+    // Update filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    generateFestivalsList();
+}
+
+function searchFestivals() {
+    const query = document.getElementById('festivalSearch').value.toLowerCase();
+    generateFestivalsList(query);
+}
+
+// Generate festivals list
+function generateFestivalsList(searchQuery = '') {
+    const festivalsList = document.getElementById('festivals-list');
+    let filteredFestivals = festivalsData;
+
+    // Apply category filter
+    if (currentFilter !== 'all') {
+        filteredFestivals = filteredFestivals.filter(festival => 
+            festival.category === currentFilter
+        );
+    }
+
+    // Apply search filter
+    if (searchQuery) {
+        filteredFestivals = filteredFestivals.filter(festival =>
+            festival.name.toLowerCase().includes(searchQuery) ||
+            festival.location.toLowerCase().includes(searchQuery) ||
+            festival.description.toLowerCase().includes(searchQuery)
+        );
+    }
+
+    // Sort by date
+    filteredFestivals.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    festivalsList.innerHTML = filteredFestivals.map(festival => `
+        <div class="festival-card" onclick="showFestivalDetails(${JSON.stringify(festival).replace(/"/g, '&quot;')})">
+            <div class="festival-card-header">
+                <span class="festival-category festival-${festival.category}">${festival.category.toUpperCase()}</span>
+                <h3 class="festival-name">${festival.name}</h3>
+                <div class="festival-date">📅 ${formatDate(festival.date)}${festival.endDate ? ` - ${formatDate(festival.endDate)}` : ''}</div>
+                <div class="festival-location">📍 ${festival.location}</div>
+            </div>
+            <div class="festival-description">
+                ${festival.description}
+            </div>
+        </div>
+    `).join('');
+}
+
+// Festival details modal
+function showFestivalDetails(festival) {
+    const modal = document.getElementById('festival-modal');
+    const details = document.getElementById('festival-details');
+
+    details.innerHTML = `
+        <div style="text-align: center; margin-bottom: 20px;">
+            <span class="festival-category festival-${festival.category}" style="display: inline-block; margin-bottom: 10px;">${festival.category.toUpperCase()}</span>
+            <h2 style="color: var(--text-dark); margin-bottom: 10px;">${festival.name}</h2>
+            <div style="color: var(--text-light); margin-bottom: 20px;">
+                📅 ${formatDate(festival.date)}${festival.endDate ? ` - ${formatDate(festival.endDate)}` : ''}<br>
+                📍 ${festival.location}<br>
+                ⏱️ Duration: ${festival.duration}
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <h3 style="color: var(--text-dark); margin-bottom: 10px;">About the Festival</h3>
+            <p style="color: var(--text-light);">${festival.description}</p>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <h3 style="color: var(--text-dark); margin-bottom: 10px;">Significance</h3>
+            <p style="color: var(--text-light);">${festival.significance}</p>
+        </div>
+    `;
+
+    modal.style.display = 'block';
+}
+
+function closeFestivalModal() {
+    document.getElementById('festival-modal').style.display = 'none';
+}
+
+// Utility functions
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const options = { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    };
+    return date.toLocaleDateString('en-IN', options);
+}
+
+// Close modals when clicking outside
+window.addEventListener('click', function(event) {
+    const festivalModal = document.getElementById('festival-modal');
+    const calendarPopup = document.getElementById('calendar-popup');
+
+    if (event.target === festivalModal) {
+        closeFestivalModal();
+    }
+    if (event.target === calendarPopup) {
+        closeCalendarPopup();
+    }
+});
+
+// Hero search functionality
+function performHeroSearch() {
+    const query = document.getElementById('heroSearch').value.toLowerCase();
+    if (query.trim()) {
+        document.getElementById('festivalSearch').value = query;
+        searchFestivals();
+        // Scroll to results
+        document.getElementById('list-view').scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+// Enter key search in hero
+document.getElementById('heroSearch').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        performHeroSearch();
+    }
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeFestivalModal();
+        closeCalendarPopup();
+    }
+});
+
+    </script>
+</body>
+</html>

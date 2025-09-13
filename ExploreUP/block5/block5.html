@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Festivals and Fairs</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f5f8fa;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #253047;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-bottom: 5px;
+    }
+
+    header {
+      background-color: #111;
+      padding: 25px 20px;
+      color: white;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .left {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .left a {
+      text-decoration: none;
+      color: white;
+    }
+
+
+
+    .nav-right {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-right a {
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .nav-right a:hover {
+      color: #ffcc00;
+      font-weight: bold;
+      text-decoration: wavy underline;
+      text-underline-offset: 2px;
+    }
+
+    .info0 {
+      text-align: center;
+      padding: 16px;
+      border-radius: 5px;
+      background: linear-gradient(135deg, #5b89c9, #716b75);
+    }
+
+    .info0 h1 {
+      color: #bebcbc;
+      font-size: 44px;
+      margin-bottom: 20px;
+    }
+
+    .info0 p {
+      color: #1c1c1c;
+      font-size: 16px;
+      margin-bottom: 20px;
+      margin-left: 30px;
+      margin-right: 30px;
+    }
+
+    section {
+      background: #fff;
+      box-shadow: 0 2px 14px rgba(120, 120, 120, 0.09);
+      border-radius: 18px;
+      margin: 48px 0 38px 0;
+      padding: 36px 40px 34px 40px;
+    }
+
+    h2 {
+      color: #0d7784;
+      font-size: 2.1rem;
+      border-bottom: 2.5px solid #26a69a;
+      padding-bottom: 7px;
+      margin-bottom: 23px;
+    }
+
+    .topic {
+      margin-bottom: 42px;
+    }
+
+    .img-row {
+      display: flex;
+      gap: 26px;
+      margin-bottom: 15px;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .img-row img {
+      flex: 1 1 0;
+      max-width: 240px;
+      max-height: 265px;
+      min-width: 120px;
+      min-height: 120px;
+      object-fit: cover;
+      border-radius: 13px;
+      background: #f2eee3;
+      box-shadow: 0 1px 11px rgba(180, 110, 15, 0.07);
+      border: 2.2px solid #ecebe7;
+      transition: transform 0.8s ease;
+    }
+
+    .img-row img:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 13px;
+      background-color: #eee;
+      font-size: 13px;
+      color: #434343;
+      border-radius: 10px 10px 0 0;
+      margin-top: 32px;
+    }
+
+    #userProfile {
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+      color: #0b6;
+      background: #e7f9ed;
+      display: none;
+    }
+
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #333;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    #toggleTheme {
+      position: fixed;
+      bottom: 80px;
+      right: 25px;
+      background: #0077aa;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .dark-theme {
+      background: #1d1d1d;
+      color: #fff;
+    }
+
+    .dark-theme header,
+    .dark-theme section {
+      background: #2a2a2a;
+      color: #f1f1f1;
+    }
+     .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .nav-buttons a {
+      background: #4a90e2;
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      font-size: 16px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .nav-buttons a:hover {
+      background: #357ABD;
+    }
+
+    /* Tooltip */
+    .nav-buttons a::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: #fff;
+      padding: 5px 8px;
+      font-size: 12px;
+      border-radius: 4px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+
+    .nav-buttons a:hover::after {
+      opacity: 1;
+    }
+  </style>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="left">
+        <a href="../../index.html">Explore UP</a>
+      </div>
+
+      <nav class="nav-right">
+        <a href="../../index.html">Home</a>
+         <a href="../exploreUP.html">U.P</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </div>
+  </header>
+  <div class="info0">
+    <h1>Festivals and Fairs</h1>
+    <p>Festivals and fairs are an integral part of Indian culture, and Uttar Pradesh stands out as a vibrant hub where
+      diverse religious traditions and regional celebrations come alive with grandeur and devotion. The state’s
+      festivals are marked by deep spiritual significance, lively public participation, and spectacular rituals.</p>
+  </div>
+
+  <!-- Hinduism -->
+  <section>
+    <h2>Hindu Festivals</h2>
+    <div class="topic">
+      <p class="info"><b>Holi:</b> Celebrated with unmatched enthusiasm, especially in Mathura and Vrindavan, Holi marks
+        the arrival of spring and victory of good over evil. The traditional Lathmar Holi in Barsana and Nandgaon
+        attracts visitors from all over the world for its colorful and playful festivities.</p>
+      <div class="img-row">
+        <img src="../block5/1.jpg" alt="city view">
+        <img src="../block5/2.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Diwali:</b> Known as the Festival of Lights, Diwali celebrates the return of Lord Rama to
+        Ayodhya. The city of Ayodhya holds spectacular Deepotsav events, lighting up thousands of earthen lamps on the
+        banks of the Sarayu River, setting world records for illumination.</p>
+      <div class="img-row">
+        <img src="../block5/3.jpg" alt="city view">
+        <img src="../block5/4.jpg" alt="city view">
+
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Ram Navami:</b> Celebrated as the birth of Lord Rama, this festival is especially significant
+        in Ayodhya, his legendary birthplace. Temples are decorated, and large processions with tableaux depicting
+        episodes from the Ramayana are organized.</p>
+      <div class="img-row">
+        <img src="../block5/5.jpg" alt="city view">
+        <img src="../block5/6.jpg" alt="city view">
+
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Krishna Janmashtami:</b> The birth of Lord Krishna is celebrated with devotion and joy,
+        particularly in Mathura and Vrindavan, believed to be Krishna’s birthplace and playground. Events include Rasa
+        Lila performances, midnight celebrations, and temple rituals.</p>
+      <div class="img-row">
+        <img src="../block5/7.jpg" alt="city view">
+        <img src="../block5/8.jpg" alt="city view">
+
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Navratri and Dussehra:</b> This nine-night festival celebrates the divine feminine and
+        culminates with Dussehra, symbolizing the victory of Lord Rama over Ravana. In cities like Varanasi and Lucknow,
+        Ram Lila plays and dramatic reenactments are popular community events.</p>
+      <div class="img-row">
+        <img src="../block5/9.jpg" alt="city view">
+        <img src="../block5/10.jpg" alt="city view">
+        <img src="../block5/11.jpg" alt="city view">
+        <img src="../block5/12.jpg" alt="city view">
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Kumbh Mela</h2>
+    <div class="topic">
+      <p class="info"><b>Kumbh Mela:</b> Held every 12 years in Prayagraj (Allahabad), this is the world’s largest
+        religious gathering, attracting millions of devotees, sadhus, and tourists. Pilgrims take a holy dip at the
+        Triveni Sangam (confluence of Ganga, Yamuna, and the mythical Saraswati), believed to cleanse sins and liberate
+        the soul. The event includes spiritual discourses, processions, and mass rituals, symbolizing the cultural unity
+        of India.
+      </p>
+      <div class="img-row">
+        <img src="../block5/13.jpg" alt="city view">
+        <img src="../block5/14.jpg" alt="city view">
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Muslim Festivals</h2>
+    <div class="topic">
+      <p class="info"><b>Eid-ul-Fitr:</b>Celebrated at the end of Ramadan, this festival is marked by communal prayers,
+        feasting, and the giving of charity (zakat). In Lucknow, a historic center of Islamic culture, the Eid namaz at
+        the Asafi Imambara draws large crowds.</p>
+      <div class="img-row">
+        <img src="../block5/15.jpg" alt="city view">
+
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Bakrid (Eid-ul-Adha):</b> Commemorating the willingness of Prophet Ibrahim to sacrifice his
+        son, this festival emphasizes devotion and sacrifice. Animals are ritually sacrificed, and the meat is
+        distributed among family, friends, and the needy.</p>
+      <div class="img-row">
+        <img src="../block5/16.jpg" alt="city view">
+
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Muharram:</b> Especially significant in Lucknow, known for its Shia Muslim heritage, Muharram
+        is observed through solemn processions, majlis (gatherings), and tazias (replicas of Imam Hussain’s tomb). The
+        city's unique syncretic culture is reflected in the respectful participation of non-Muslims as well.</p>
+      <div class="img-row">
+        <img src="../block5/17.jpg" alt="city view">
+        <img src="../block5/18.jpg" alt="city view">
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Buddhist and Jain Festivals</h2>
+    <div class="topic">
+      <p class="info"><b>Buddha Purnima:</b> Celebrated on the full moon of Vaisakh (April-May), this marks the birth,
+        enlightenment, and death (Mahaparinirvana) of Gautama Buddha. Sarnath, near Varanasi, where Buddha gave his
+        first sermon, becomes a center of pilgrimage and prayer during this time.
+      </p>
+      <div class="img-row">
+        <img src="../block5/19.jpg" alt="city view">
+        <img src="../block5/20.jpg" alt="city view">
+
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Mahavir Jayanti:</b>Celebrating the birth of Lord Mahavira, the 24th Tirthankara of Jainism,
+        this day is observed with prayers, processions, and community service by Jains across the state.</p>
+      <div class="img-row">
+        <img src="../block5/21.jpg" alt="city view">
+        <img src="../block5/22.jpg" alt="city view">
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Sikh Festival</h2>
+    <div class="topic">
+      <p class="info"><b>Guru Parv (Guru Nanak Jayanti):</b> ThMarking the birth of Guru Nanak, the first Sikh Guru,
+        this day is observed with prabhat pheris (early morning processions), kirtans (devotional songs), and langars
+        (community kitchens) in Gurudwaras, notably in regions with Sikh communities.
+      </p>
+      <div class="img-row">
+        <img src="../block5/23.jpg" alt="city view">
+        <img src="../block5/24.jpg" alt="city view">
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <section>
+    <h2>Local Fairs and Cultural Events</h2>
+    <div class="topic">
+      <p class="info"> Apart from religious festivals, Uttar Pradesh hosts numerous local fairs like:</p>
+      
+    </div>
+    <div class="topic">
+      <p class="info"><b>Magh Mela (Prayagraj):</b> An annual precursor to the Kumbh Mela.</p>
+<div class="img-row">
+        <img src="../block5/25.jpg" alt="city view">
+        <img src="../block5/27.jpg" alt="city view">
+
+      </div>
+
+    </div>
+    <div class="topic">
+      <p class="info"><b>Taj Mahotsav (Agra):</b> A cultural fair showcasing local crafts, music, dance, and cuisine.
+      </p>
+<div class="img-row">
+        <img src="../block5/28.jpg" alt="city view">
+        <img src="../block5/29.jpg" alt="city view">
+
+      </div>
+
+    </div>
+    <div class="topic">
+      <p class="info"><b>Ram Barat (Agra):</b> A grand wedding procession of Lord Rama celebrated with decorations,
+        music, and dramatizations.</p>
+<div class="img-row">
+        <img src="../block5/30.jpg" alt="city view">
+        <img src="../block5/31.jpg" alt="city view">
+
+      </div>
+
+    </div>
+    <div class="topic">
+      <p class="info"> These events promote interfaith harmony, heritage tourism, and the preservation of cultural
+        traditions, making Uttar Pradesh a microcosm of India's spiritual and festive diversity.</p>
+
+    </div>
+
+  </section>
+
+ <div class="nav-buttons">
+    <a href="../block4/block4.html" data-tooltip="Cuisine  ">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    <a href="../exploreUP.html" data-tooltip="Explore U.P">
+      <i class="fas fa-home"></i>
+    </a>
+    <a href="../block6/Block6.html" data-tooltip="Traditional Lifestyle and Dress">
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+
+  <!-- Buttons -->
+  <button id="backToTop">↑ Top</button>
+  <button id="toggleTheme">Dark</button>
+
+  <footer>
+    &copy; 2025 Explore UP || Made By Team Rocket
+  </footer>
+ <script>
+    const topBtn = document.getElementById("backToTop");
+    window.onscroll = () => {
+      topBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    };
+    topBtn.onclick = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    document.getElementById("toggleTheme").onclick = () => {
+      document.body.classList.toggle("dark-theme");
+    };
+  </script>
+</body>
+
+</html>

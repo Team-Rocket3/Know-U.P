@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - Know U.P</title>
+    <link rel="icon" href="ExploreUP/photo/taj-mahal.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --text-dark: #f9fafb;
+            --text-light: #d1d5db;
+            --bg-light: #111827;
+            --bg-white: #1f2937;
+            --border-color: #374151;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            transition: all 0.3s ease;
+        }
+
+        .header {
+            background: var(--bg-white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 12px 0;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-1px);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-area h1 {
+            color: var(--primary-color);
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px 50px;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .page-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--bg-white);
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .review-card {
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgb(115, 202, 253);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-7g);
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb, #1a1a23);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 16px;
+        }
+
+        .reviewer-details h4 {
+            margin: 0;
+            font-size: 16px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .reviewer-details .date {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 18px;
+            margin-right: 8px;
+        }
+
+        .review-text {
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .destination-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #e8f4fd, #dbeafe);
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+
+        .load-more {
+            text-align: center;
+        }
+
+        .load-more-btn {
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .load-more-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-light);
+        }
+
+        .loading i {
+            font-size: 32px;
+            margin-bottom: 16px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0 16px;
+            }
+
+            .container {
+                padding: 90px 16px 30px;
+            }
+
+            .page-title {
+                font-size: 28px;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .filters {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-home"></i>
+            </a>
+
+            <div class="logo-area">
+                <h1>Know U.P </h1>
+            </div>
+
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">⭐ Customer Reviews</h1>
+            <p class="page-subtitle">
+                🗣️ What our travelers say about their amazing U.P experiences ✨
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalReviews">0</div>
+                    <div class="stat-label">📝 Total Reviews</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="avgRating">0</div>
+                    <div class="stat-label">⭐ Average Rating</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="topDest">-</div>
+                    <div class="stat-label">🏆 Top Destination</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">😊 Satisfaction</div>
+                </div>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" onclick="filterReviews('all')">📋 All Reviews</button>
+                <button class="filter-btn" onclick="filterReviews('Varanasi')">🕉️ Varanasi</button>
+                <button class="filter-btn" onclick="filterReviews('Agra')">🏛️ Agra</button>
+                <button class="filter-btn" onclick="filterReviews('Lucknow')">🍽️ Lucknow</button>
+                <button class="filter-btn" onclick="filterReviews('Prayagraj')">🌊 Prayagraj</button>
+                <button class="filter-btn" onclick="filterReviews('Mathura')">🙏 Mathura</button>
+            </div>
+        </div>
+
+        <div id="reviewsGrid" class="reviews-grid">
+        </div>
+
+        <div class="load-more">
+            <button class="load-more-btn" onclick="loadMoreReviews()" id="loadMoreBtn">
+                📖 Load More Reviews
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let allReviews = [];
+        let filteredReviews = [];
+        let currentShown = 6;
+
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            const themeIcon = document.querySelector('.theme-toggle i');
+            themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+
+            const themeIcon = document.querySelector('.theme-toggle i');
+            themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        function loadReviews() {
+            const grid = document.getElementById('reviewsGrid');
+            const reviewsToShow = filteredReviews.slice(0, currentShown);
+
+            grid.innerHTML = reviewsToShow.map(review => `
+                <div class="review-card">
+                    <div class="reviewer-info">
+                        <div class="avatar">${review.name.charAt(0)}</div>
+                        <div class="reviewer-details">
+                            <h4>${review.name}</h4>
+                            <p class="date">${new Date(review.date).toLocaleDateString('en-IN', { 
+                                year: 'numeric', 
+                                month: 'short', 
+                                day: 'numeric' 
+                            })}</p>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <div class="stars">
+                            ${Array.from({length: review.rating}, () => '★').join('')}
+                            ${Array.from({length: 5 - review.rating}, () => '<span style="color: #e5e7eb;">★</span>').join('')}
+                        </div>
+                    </div>
+                    <p class="review-text">"${review.text}"</p>
+                    <div class="destination-tag">
+                        <i class="fas fa-map-marker-alt"></i>
+                        ${review.destination || 'General'}
+                    </div>
+                </div>
+            `).join('');
+
+            const loadBtn = document.getElementById('loadMoreBtn');
+            loadBtn.style.display = currentShown >= filteredReviews.length ? 'none' : 'inline-block';
+        }
+
+        function loadMoreReviews() {
+            currentShown += 6;
+            loadReviews();
+        }
+
+        function filterReviews(destination) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            filteredReviews = destination === 'all' ? 
+                allReviews : 
+                allReviews.filter(review => review.destination === destination);
+
+            currentShown = 6;
+            loadReviews();
+        }
+
+        function updateStats() {
+            const total = allReviews.length;
+            const avgRating = total > 0 ? (allReviews.reduce((sum, review) => sum + review.rating, 0) / total).toFixed(1) : '0.0';
+
+            const destCounts = {};
+            allReviews.forEach(review => {
+                destCounts[review.destination] = (destCounts[review.destination] || 0) + 1;
+            });
+            const topDest = total > 0 ? Object.keys(destCounts).reduce((a, b) => 
+                destCounts[a] > destCounts[b] ? a : b
+            ) : '-';
+
+            document.getElementById('totalReviews').textContent = total;
+            document.getElementById('avgRating').textContent = avgRating;
+            document.getElementById('topDest').textContent = topDest;
+        }
+
+        function loadSampleReviews() {
+            const sampleData = [
+                {
+                    id: 1,
+                    name: "Priya Sharma",
+                    destination: "Varanasi",
+                    rating: 5,
+                    text: "An absolutely spiritual experience! 🕯️ The ghats, the evening aarti, and the boat ride on Ganges were unforgettable. The guide was knowledgeable and the arrangements were perfect. 🙏",
+                    date: "2024-12-15"
+                },
+                {
+                    id: 2,
+                    name: "Amit Kumar",
+                    destination: "Agra",
+                    rating: 5,
+                    text: "The Taj Mahal is even more beautiful in person! 📸 Our tour included early morning access which was amazing. Great photography opportunities and excellent local food recommendations. 🍛",
+                    date: "2024-12-10"
+                },
+                {
+                    id: 3,
+                    name: "Sneha Gupta",
+                    destination: "Lucknow",
+                    rating: 4,
+                    text: "Loved the Nawabi culture and cuisine! 🍢 The Imambara was magnificent and the kebabs were delicious. Would definitely recommend this trip to food lovers. 😋",
+                    date: "2024-12-08"
+                },
+                {
+                    id: 4,
+                    name: "Rajesh Patel",
+                    destination: "Prayagraj",
+                    rating: 5,
+                    text: "The Sangam was a divine experience. ⛵ The spiritual atmosphere and the boat ride to the confluence point were highlights. Well organized trip with comfortable accommodations. 🏨",
+                    date: "2024-12-05"
+                },
+                {
+                    id: 5,
+                    name: "Kavita Singh",
+                    destination: "Mathura",
+                    rating: 4,
+                    text: "Beautiful temples and rich Krishna heritage. The local guides shared amazing stories and the festival atmosphere was incredible. Great for families and devotees.",
+                    date: "2024-12-02"
+                },
+                {
+                    id: 6,
+                    name: "Suresh Yadav",
+                    destination: "Varanasi",
+                    rating: 4,
+                    text: "Peaceful pilgrimage destination with beautiful temples. The morning boat ride during sunrise was magical. Good connectivity and clean facilities.",
+                    date: "2024-11-28"
+                },
+                {
+                    id: 7,
+                    name: "Meera Agarwal",
+                    destination: "Agra",
+                    rating: 5,
+                    text: "Life-changing experience! The architecture is stunning and the history is fascinating. The local guide explained the cultural significance beautifully. Highly recommend staying at least 2 days.",
+                    date: "2024-11-25"
+                },
+                {
+                    id: 8,
+                    name: "Rohit Mishra",
+                    destination: "Lucknow",
+                    rating: 4,
+                    text: "Besides the monuments, don't miss the street food! The architecture is beautiful and the history is rich. Great value for money tour package.",
+                    date: "2024-11-20"
+                }
+            ];
+
+            allReviews = sampleData;
+            filteredReviews = allReviews;
+            updateStats();
+            loadReviews();
+        }
+
+        function initPage() {
+            document.getElementById('reviewsGrid').innerHTML = `
+                <div class="loading" style="grid-column: 1 / -1;">
+                    <i class="fas fa-spinner"></i>
+                    <div>⏳ Loading reviews...</div>
+                </div>
+            `;
+
+            fetch('fiels/get_reviews.php')
+                .then(response => {
+                    if (!response.ok) throw new Error('PHP not available');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.error) throw new Error('Database error');
+                    if (data.length === 0) {
+                        loadSampleReviews();
+                        return;
+                    }
+                    allReviews = data;
+                    filteredReviews = allReviews;
+                    updateStats();
+                    loadReviews();
+                })
+                .catch(() => {
+                    console.log('Loading sample reviews');
+                    loadSampleReviews();
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeTheme();
+            initPage();
+        });
+    </script>
+</body>
+</html>

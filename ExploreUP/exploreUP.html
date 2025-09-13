@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Explore Uttar Pradesh</title>
+    <style>
+        :root {
+            --color-bg: #F8F9FA;
+            --color-panel: #FFF;
+            --color-text: #232323;
+            --color-accent: #2a5298;
+            --color-gold: #FFB200;
+        }
+
+        [data-theme='dark'] {
+            --color-bg: #161922;
+            --color-panel: #232537;
+            --color-text: #F8F9FA;
+            --color-accent: #f38e00;
+            --color-gold: #2a5298;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            min-height: 100vh;
+        }
+
+        body,
+        .main-content {
+            background: var(--color-bg);
+            color: var(--color-text);
+            transition: background 0.5s, color 0.5s;
+        }
+
+        body {
+            font-family: sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a,
+        .title a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color .25s;
+        }
+
+        a:hover {
+            color: var(--color-gold);
+        }
+
+        header {
+            background: #000;
+            color: #FFF;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+            box-shadow: 0 2px 8px #0002;
+        }
+
+        .header-nav {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .left a {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+
+        nav.nav-ri {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav.nav-ri a {
+            font-weight: 500;
+            font-size: 1rem;
+            color: #fff;
+            padding: 6px 8px;
+            border-radius: 4px;
+        }
+
+        nav.nav-ri a:hover {
+            color: var(--color-gold);
+        }
+
+        #themeToggleBtn {
+            font-size: 1.5rem;
+            border: none;
+            background: none;
+            color: #FFF;
+            margin-left: 1.5rem;
+            cursor: pointer;
+        }
+
+        .map-section {
+            background: linear-gradient(120deg, #2a5298 70%, #132444);
+            padding: 38px 25.6px 24px 25.6px;
+            margin-bottom: 28px;
+        }
+
+        .map-card {
+            padding: 24px 21px 17px 21px;
+            background: var(--color-panel);
+            border-radius: 16px;
+            box-shadow: 0 3px 30px #2a52981c;
+            max-width: 1164px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .map-card h2 {
+            color: var(--color-gold);
+            margin: 0 0 .8em 0;
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .up-map {
+            width: 95%;
+            max-width: 520px;
+            border: 3.5px solid var(--color-accent);
+            border-radius: 13px;
+            box-shadow: 0 1px 30px #0003;
+            background: linear-gradient(#5cb7f0 50%, #ff6600 100%);
+            transition: .8s ease-in;
+        }
+
+        .up-map:hover,
+        .up-map:focus {
+            box-shadow: 0 8px 44px #2a52986a;
+            border-color: var(--color-gold);
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto 2.5rem auto;
+            padding: 0 1rem;
+        }
+
+        .content-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            align-items: center;
+            gap: 2.2rem;
+            margin-bottom: 2.7rem;
+            background: var(--color-panel);
+            border-radius: 14px;
+            box-shadow: 0 6px 28px #0001;
+            padding: 23px 9px 23px 30px;
+            transition: box-shadow 0.3s;
+        }
+
+        .content-section:hover,
+        .content-section:focus-within {
+            box-shadow: 0 14px 38px #0002;
+        }
+
+        .photo-block {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform .36s;
+            box-shadow: 0 6px 10px #0003;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-block:hover,
+        .photo-block:focus {
+            transform: translateY(-8px);
+            outline: none;
+            box-shadow: 0 15px 44px #0004;
+        }
+
+        .photo-block img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .title {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        .title a {
+            outline-offset: 4px;
+        }
+
+        .title a:hover,
+        .title a:focus {
+            color: var(--color-gold);
+        }
+
+        .info {
+            font-family: cursive;
+            font-size: 1.1rem;
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .section-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity .7s cubic-bezier(.21, 1.03, .59, .91), transform .7s cubic-bezier(.21, 1.03, .59, .91);
+        }
+
+        .section-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
+            background: #232323;
+            color: #FFF;
+            padding: 2rem 1rem 1rem 1rem;
+            text-align: center;
+            margin-top: 2.7rem;
+            font-size: 1.06em;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-nav">
+            <div class="left"><a href="../index.html" aria-label="Explore UP Homepage">Explore U.P</a></div>
+
+            <nav class="nav-ri">
+                <a href="../index.html">Home</a>
+                <a href="../ExploreUP/about.html">About</a>
+            </nav>
+            <button id="themeToggleBtn" aria-label="Toggle Light/Dark Theme">
+                <span id="themeIcon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="map-section" aria-label="Map of Uttar Pradesh">
+        <div class="map-cont">
+            <div class="map-card">
+                <h2> Uttar Pradesh</h2>
+                <img src="./Uttar Pradesh.png" class="up-map" tabindex="0" alt="Map of Uttar Pradesh" />
+            </div>
+        </div>
+    </section>
+
+
+
+    <main class="main-content">
+
+        <section class="content-section" tabindex="0">
+            <div class="photo-block" aria-hidden="true">
+                <a href="../ExploreUP/block1/Block_1.html">
+                    <img src="../ExploreUP/photo/1.jpg" alt="Religious Culture" />
+                </a>
+            </div>
+            <div class="text-content">
+                <h2 id="title-culture" class="title"><a href="../ExploreUP/block1/Block_1.html">Religious
+                        Culture</a></h2>
+                <p class="info">
+                    Uttar Pradesh stands as the spiritual and religious heartland of India,
+                    reflecting the country’s deep-rooted pluralistic traditions. The state's landscape is
+                    interwoven with sacred sites, pilgrimage routes, ancient shrines, and historical centers
+                    tied to major world religions. Each city and town in UP tells a story of divine legends,
+                    saints, emperors, and sages, making it a living museum of India's spiritual heritage.
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section" tabindex="0">
+            <div class="text-content">
+                <h2 id="title-folk" class="title"><a href="../ExploreUP/block2/block2.html">Folk and Performing
+                        Arts</a></h2>
+                <p class="info">
+                    Uttar Pradesh boasts a rich and vibrant tradition of folk and classical performing arts that
+                    reflect the cultural, religious, and social fabric of the region. These art forms are deeply
+                    rooted in the everyday lives of the people and are performed on various occasions such as
+                    festivals, seasons, religious events, and social gatherings.
+                </p>
+            </div>
+            <div class="photo-block" aria-hidden="true">
+                <a href="../ExploreUP/block2/block2.html"><img src="../ExploreUP/photo/dance.jpg"
+                        alt="Folk and Performing Arts" />
+                </a>
+            </div>
+        </section>
+
+        <section class="content-section" tabindex="0">
+            <div class="photo-block" aria-hidden="true">
+                <a href="../ExploreUP/block3/block3.html">
+
+                    <img src="../ExploreUP/photo/Art and craft.jpg" alt="Art and craft
+                        Continued" />
+                </a>
+            </div>
+            <div class="text-content">
+                <h2 id="title-arts" class="title"><a href="../ExploreUP/block3/block3.html"> Art and craft</a></h2>
+                <p class="info">
+                    Uttar Pradesh is a vibrant hub of traditional arts and crafts, many of which have roots in
+                    centuries-old practices that continue to thrive today. These crafts are not only a source of
+                    livelihood but also embody the region’s rich cultural and aesthetic heritage.
+            </div>
+        </section>
+
+        <section class="content-section" tabindex="0">
+            <div class="text-content">
+                <h2 id="title-cuisine" class="title"><a href="../ExploreUP/block4/block4.html">Cuisine
+                    </a></h2>
+                <p class="info">
+                    Uttar Pradesh boasts a rich and diverse culinary heritage that reflects its cultural and historical
+                    depth. The food varies across regions, with distinct styles in the north/central plains and the
+                    Awadh region (especially Lucknow). The cuisine is broadly divided into two categories: vegetarian
+                    fare, which dominates most parts of the state, and the royal Mughlai/ Awadhi cuisine, known for its
+                    richness and intricate flavors.
+
+                </p>
+            </div>
+            <div class="photo-block" aria-hidden="true">
+                <a href="../ExploreUP/block4/block4.html">
+
+                    <img src="../ExploreUP/photo/2.jpg" alt="UP Cultural Festival" />
+                </a>
+            </div>
+        </section>
+
+        <section class="content-section" tabindex="0">
+            <div class="photo-block" aria-hidden="true">
+                <a href="../ExploreUP/block5/block5.html">
+
+                    <img src="../ExploreUP/photo/Festivals.jpg" alt="Festivals and Fairs in Uttar Pradesh" />
+                </a>
+            </div>
+            <div class="text-content">
+                <h2 id="title-festivals" class="title"><a href="../ExploreUP/block5/block5.html">Festivals and Fairs</a>
+                </h2>
+                <p class="info">
+                    Festivals and fairs are an integral part of Indian culture, and Uttar Pradesh stands out as a
+                    vibrant hub where diverse religious traditions and regional celebrations come alive with
+                    grandeur and devotion. The state’s festivals are marked by deep spiritual significance, lively
+                    public participation, and spectacular rituals.
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section" tabindex="0">
+            <div class="text-content">
+                <h2 id="title-traditional-lifestyle" class="title"><a href="../ExploreUP/block6/block6.html">Traditional
+                        Lifestyle
+                        and Dress</a></h2>
+                <p class="info">
+                    Uttar Pradesh, being one of the most populous and culturally diverse states of India, showcases
+                    a vivid contrast between rural and urban lifestyles. While the cities like Lucknow, Kanpur,
+                    Varanasi, and Noida have embraced modernization, much of the state—especially in regions like
+                    Bundelkhand, Purvanchal, and Awadh—still maintains a deeply traditional rural lifestyle.
+                </p>
+            </div>
+            <div class="photo-block" aria-hidden="true">
+                <a href="../ExploreUP/block6/block6.html">
+
+                    <img src="../ExploreUP/photo/7.jpeg" alt="Traditional Dresses of UP" />
+                </a>
+            </div>
+        </section>
+
+        <section class="content-section" tabindex="0">
+            <div class="photo-block" aria-hidden="true">
+                <a href="../ExploreUP/block7/block7.html">
+
+                    <img src="../ExploreUP/photo/8.jpeg" alt="Languages and Literature in Uttar Pradesh" />
+                </a>
+            </div>
+            <div class="text-content">
+                <h2 id="title-languages-literature" class="title">
+                    <a href="../ExploreUP/block7/block7.html">Languages and
+                        Literature</a>
+                </h2>
+                <p class="info">
+                    Uttar Pradesh is a linguistically rich state with a strong cultural and literary heritage.
+                    While Hindi is the official language, a number of regional and classical languages flourish here,
+                    reflecting the diversity of its people and history.
+                </p>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <div">
+            &copy; 2025 <strong>Know UP </strong> || Team Rocket.
+            </div>
+    </footer>
+
+
+
+    <script>
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            document.getElementById('themeIcon').textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+        function toggleTheme() {
+            setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        }
+        document.getElementById('themeToggleBtn').onclick = toggleTheme;
+        setTheme(localStorage.getItem('theme') || 'light');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.content-section').forEach(sec => {
+            sec.classList.add('section-animate');
+            observer.observe(sec);
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Languages and Literature</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f5f8fa;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #253047;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      background-color: #111;
+      padding: 20px;
+      color: white;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .left a {
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-right a {
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .nav-right a:hover {
+      color: #ffcc00;
+      font-weight: bold;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .info0 {
+      text-align: center;
+      padding: 16px;
+      border-radius: 5px;
+      background: linear-gradient(135deg, #5b89c9, #716b75);
+    }
+
+    .info0 h1 {
+      color: #bebcbc;
+      font-size: 44px;
+      margin-bottom: 0;
+    }
+
+    section {
+      background: #fff;
+      box-shadow: 0 2px 14px rgba(120, 120, 120, 0.09);
+      border-radius: 18px;
+      margin: 40px 0;
+      padding: 36px 40px;
+    }
+
+    h2 {
+      color: #0d7784;
+      font-size: 2.1rem;
+      border-bottom: 2.5px solid #26a69a;
+      padding-bottom: 7px;
+      margin-bottom: 23px;
+    }
+
+    .topic {
+      margin-bottom: 30px;
+    }
+
+    .img-row {
+      display: flex;
+      gap: 26px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .img-row img {
+      max-width: 240px;
+      height: auto;
+      border-radius: 13px;
+      background: #f2eee3;
+      box-shadow: 0 1px 11px rgba(180, 110, 15, 0.07);
+      border: 2px solid #ecebe7;
+      transition: transform 0.4s ease;
+    }
+
+    .img-row img:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 13px;
+      background-color: #eee;
+      font-size: 13px;
+      color: #434343;
+      border-radius: 10px 10px 0 0;
+      margin-top: 32px;
+    }
+
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #333;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #toggleTheme {
+      position: fixed;
+      bottom: 80px;
+      right: 25px;
+      background: #0077aa;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .dark-theme {
+      background: #1d1d1d;
+      color: #fff;
+    }
+
+    .dark-theme header,
+    .dark-theme section {
+      background: #2a2a2a;
+      color: #f1f1f1;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .nav-buttons a {
+      background: #4a90e2;
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      font-size: 16px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .nav-buttons a:hover {
+      background: #357ABD;
+    }
+
+    /* Tooltip */
+    .nav-buttons a::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: #fff;
+      padding: 5px 8px;
+      font-size: 12px;
+      border-radius: 4px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+
+    .nav-buttons a:hover::after {
+      opacity: 1;
+    }
+  </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="left">
+        <a href="../../index.html">Explore UP</a>
+      </div>
+      <nav class="nav-right">
+        <a href="../../index.html">Home</a>
+        <a href="../exploreUP.html">U.P</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="info0">
+    <h1>Languages and Literature</h1>
+  </div>
+
+  <section>
+    <h2>Languages</h2>
+    <div class="topic">
+      <p class="info"> Uttar Pradesh is a linguistically rich state with a strong cultural and literary heritage. While
+        Hindi is the official language, a number of regional and classical languages flourish here, reflecting the
+        diversity of its people and history.
+        Awadh—still maintains a deeply traditional rural lifestyle.</p>
+    </div>
+
+
+    <div class="topic">
+      <p class="info"><b> Hindi:</b> The primary language of administration and education. It also serves as the medium
+        for most modern literature and media in the state.</p>
+      <div class="img-row">
+        <img src="../block7/1.jpg" alt="city view">
+        <img src="../block7/2.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Urdu:</b>Widely spoken, especially in cities like Lucknow, Aligarh, and Faizabad. It holds
+        cultural and poetic importance and has coexisted with Hindi in both literary and spoken forms.</p>
+      <div class="img-row">
+        <img src="../block7/3.jpg" alt="city view">
+        <img src="../block7/4.jpg" alt="city view">
+      </div>
+    </div>
+
+
+    <div class="topic">
+      <p class="info"><b>Awadhi:</b> A dialect of Eastern Hindi, spoken in central UP including areas like Ayodhya and
+        Lucknow. It was historically used in devotional literature.
+      </p>
+      <div class="img-row">
+        <img src="../block7/6.jpg" alt="city view">
+        <img src="../block7/7.jpg" alt="city view">
+      </div>
+    </div>
+
+    <div class="topic">
+      <p class="info"><b> Bhojpuri:</b>Spoken in eastern UP (e.g., Gorakhpur, Varanasi region). It has a vibrant oral
+        and folk literature tradition and is increasingly used in cinema and music. </p>
+      <div class="img-row">
+        <img src="../block7/9.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Braj (Braj Bhasha):</b> Spoken in the western parts like Mathura and Agra. It was historically
+        used in devotional poetry, especially related to Lord Krishna.
+      </p>
+      <div class="img-row">
+        <img src="../block7/11.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Bundeli:</b> Spoken in the Bundelkhand region (southwestern UP). It has a distinct folk
+        tradition and has influenced regional music and ballads.</p>
+      <div class="img-row">
+        <img src="../block7/13.jpg" alt="city view">
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Literature</h2>
+    <div class="topic">
+      <p class="info"> Uttar Pradesh has been the cradle of both classical and modern Indian literature in multiple
+        languages. Its writers and poets have shaped spiritual, cultural, and political consciousness through various
+        eras.</p>
+    </div>
+
+    <div class="topic">
+      <p class="info"><b>1. Tulsidas (1532–1623):</b> Famous Work: Ramcharitmanas
+        <br>
+
+        Language: Awadhi
+        <br>
+        A towering figure in medieval Indian devotional literature.
+        <br>
+        His Ramcharitmanas, a retelling of the Sanskrit Ramayana, is considered one of the greatest works in Hindi
+        literature.
+        <br>
+        Made the story of Lord Rama accessible to the common people.
+        <br>
+        Emphasized Bhakti (devotion) and moral values.
+      </p>
+      <div class="img-row">
+        <img src="../block7/14.jpg" alt="city view">
+        <img src="../block7/16.jpg" alt="city view">
+      </div>
+    </div>
+
+    <div class="topic">
+      <p class="info"><b>2. Kabir (15th century):</b>
+
+        Language: A mix of Hindi, Awadhi, and Bhojpuri
+        <br>
+        A mystic poet and saint of the Bhakti movement.
+        <br>
+        Criticized religious orthodoxy and emphasized a direct connection with the divine.
+        <br>
+        His Doha (couplets) are still quoted widely for their spiritual depth and simplicity.
+        <br>
+        His works transcend religious boundaries and are revered by Hindus, Muslims, and Sikhs.
+      </p>
+      <div class="img-row">
+        <img src="../block7/17.jpg" alt="city view">
+        <img src="../block7/18.jpg" alt="city view">
+      </div>
+    </div>
+
+    <div class="topic">
+      <p class="info"><b>3. Munshi Premchand (1880–1936):</b>
+
+        Languages: Urdu and Hindi
+        <br>
+        Known as the father of modern Hindi-Urdu fiction.
+        <br>
+        His novels and short stories explored social issues like poverty, caste discrimination, and colonial oppression.
+        <br>
+        Notable works: Godaan, Nirmala, Sevasadan
+        <br>
+        His writing blended realism with strong moral and social commentary.
+      </p>
+      <div class="img-row">
+        <img src="../block7/20.jpg" alt="city view">
+        <img src="../block7/21.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>4. Urdu Poetry in Lucknow and Faizabad:</b>
+        Lucknow was a major cultural center under the Nawabs of Awadh in the 18th and 19th centuries.
+        <br>
+        Known for its refined Urdu, shairi (poetry), and Tehzeeb (etiquette).
+        <br>
+        Important literary figures: Mir Taqi Mir, Mirza Ghalib (visited), Ameer Meenai, and later Josh Malihabadi.
+        <br>
+        Poetry themes included romance, Sufism, and political resistance.
+        <br>
+        Faizabad, being close to the Awadhi cultural core, also fostered Urdu poets and hosted syncretic traditions.
+      </p>
+      <div class="img-row">
+        <img src="../block7/23.jpg" alt="city view">
+        <img src="../block7/24.jpg" alt="city view">
+        <img src="../block7/25.jpg" alt="city view">
+      </div>
+    </div>
+
+
+    <div class="topic">
+      <p class="info"><b>Legacy:</b> Uttar Pradesh continues to be a literary hub. Its linguistic diversity and
+        deep-rooted traditions in poetry, prose, and philosophy make it central to understanding Indian literary
+        history. From Bhakti saints to modern novelists, the region's voices have left a lasting impact on Indian
+        culture and identity.</p>
+
+    </div>
+  </section>
+
+  <button id="backToTop">↑ Top</button>
+  <button id="toggleTheme">Dark</button>
+
+  <div class="nav-buttons">
+    <a href="../block6/block6.html" data-tooltip="Traditional Lifestyle and Dress">
+      <i class="fas fa-arrow-left"></i>
+    </a>
+    <a href="../exploreUP.html" data-tooltip="Explore U.P">
+      <i class="fas fa-home"></i>
+    </a>
+  </div>
+
+  <footer>
+    &copy; 2025 Explore UP || Made By Team Rocket
+  </footer>
+
+
+  <script>
+    const topBtn = document.getElementById("backToTop");
+    window.onscroll = () => {
+      topBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    };
+    topBtn.onclick = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    document.getElementById("toggleTheme").onclick = () => {
+      document.body.classList.toggle("dark-theme");
+    };
+  </script>
+</body>
+
+</html>

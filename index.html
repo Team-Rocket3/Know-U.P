@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Know UP</title>
+  <link rel="icon" href="ExploreUP/photo/taj-mahal.png" type="image/x-icon">
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <div class="logo-area">
+        <h1>Know-U.P</h1>
+      </div>
+      <div class="nav-right">
+        <button class="theme-btn" onclick="toggleTheme()" title="Toggle theme">
+          <i class="fas fa-moon"></i>
+        </button>
+
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#cities">Cities</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="././ExploreUP/event/festival-calendar.html">Festival Calendar</a></li>
+          <li><a href="ExploreUP/about.html">About</a></li>
+        </ul>
+        <a href="fiels/profile.php" id="profile-icon" class="user-icon">
+          <i class="fas fa-user-circle"></i></a>
+
+      </div>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-text">
+      <h1 class="hero-title">Discover Uttar Pradesh</h1>
+      <p class="hero-desc">Experience the Rich Heritage and Culture of India's Heartland</p>
+
+      <div class="search-area">
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="Search destinations..." onkeyup="searchCities()">
+          <i class="fas fa-search"></i>
+        </div>
+        <div id="search-results" class="search-results"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="stats">
+    <div class="main-container">
+      <div class="stats-grid">
+        <div class="stat-box">
+          <h3>75</h3>
+          <p>District</p>
+        </div>
+        <div class="stat-box">
+          <h3>241M+</h3>
+          <p>Population</p>
+        </div>
+        <div class="stat-box">
+          <h3>3</h3>
+          <p>UNESCO Sites</p>
+        </div>
+        <div class="stat-box">
+          <h3>35+</h3>
+          <p>Tourist Destination</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="cities" class="cities">
+    <div class="main-container">
+
+      <div class="explore-up">
+        <a href="ExploreUP/exploreUP.html" target="_blank" class="explore-btn">Explore UP🛕
+
+        </a>
+      </div>
+
+      <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterCities('all', event)">All Citys</button>
+        <button class="filter-btn" onclick="filterCities('heritage', event)">Heritage</button>
+        <button class="filter-btn" onclick="filterCities('religious', event)">Religious</button>
+        <button class="filter-btn" onclick="filterCities('modern', event)">Modern</button>
+
+      </div>
+      <div id="cities-grid" class="cities-grid">
+      </div>
+      <div style="text-align: center; margin-top: 20px;">
+        <button id="show-more-btn" class="btn-modern" onclick="loadMoreCities()">Show More Cities</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="packages" class="packages">
+    <div class="main-container">
+      <h2 class="page-title">Tour Packages</h2>
+      <div id="packages-grid" class="packages-grid">
+      </div>
+
+    </div>
+  </section>
+
+  <section id="reviews" class="reviews-section">
+    <div class="main-container">
+      <div class="reviews-header">
+        <h2 class="page-title">Public Reviews</h2>
+        <a href="reviews.html" class="view-all-btn">View All</a>
+      </div>
+      <div id="reviews-grid" class="reviews-grid">
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="main-container">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>About Uttar Pradesh</h2>
+          <p>Uttar Pradesh, India's most populous state, is a treasure trove of history, culture, and spirituality. From
+            the iconic Taj Mahal in Agra to the spiritual ghats of Varanasi, UP offers an incredible journey through
+            time.</p>
+          <p>Experience the birthplace of Lord Krishna in Mathura, witness the confluence of rivers in Prayagraj, and
+            explore the architectural marvels of Lucknow. Our carefully curated tours ensure you don't miss any of the
+            wonders this magnificent state has to offer.</p>
+        </div>
+        <div class="about-image">
+          <img src="ExploreUP/home Img2.jpeg" alt="Varanasi Ghats">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="main-container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h3>UP Tourism -</h3>
+          <p>Discover the incredible heritage and culture of Uttar Pradesh with our expertly crafted tour packages.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links :-</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#cities">Cities</a></li>
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="ExploreUP/about.html">About</a></li>
+            <li><a href="././admin/index.php">Management Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact Info :-</h4>
+          <p>📞+91 9876543211</p>
+          <p>📧knowup65@gmail.com</p>
+          <p>🛕Lucknow, Uttar Pradesh</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Know-UP || Team Rocket.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="booking-modal" class="modal">
+    <div class="modal-box">
+      <span class="close" onclick="closeBookingModal()">&times;</span>
+      <h2>Book Your Trip</h2>
+
+      <form id="booking-form" action="fiels/booking.php" method="POST">
+        <div class="form-group">
+          <label for="destination">Destination</label>
+          <input type="text" id="destination" name="city" readonly>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="check-in">Check-in Date</label>
+            <input type="date" id="check-in" name="checkin_date" required>
+          </div>
+          <div class="form-group">
+            <label for="check-out">Check-out Date</label>
+            <input type="date" id="check-out" name="checkout_date" required>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="rate">Rate</label>
+          <input type="text" id="rate" readonly>
+        </div>
+
+        <div class="form-group">
+          <label for="total-amount">Total Payment</label>
+          <p id="total-amount">₹0</p>
+        </div>
+
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="adults">Adults</label>
+            <select id="adults" name="adults">
+              <option value="1">1 Adult</option>
+              <option value="2">2 Adults</option>
+              <option value="3">3 Adults</option>
+              <option value="4">4 Adults</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="children">Children</label>
+            <select id="children" name="children">
+              <option value="0">No Children</option>
+              <option value="1">1 Child</option>
+              <option value="2">2 Children</option>
+              <option value="3">3 Children</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="trip-type">Trip Type</label>
+          <select id="trip-type" name="trip_type" required>
+            <option value="family">Family Trip</option>
+            <option value="couple">Couple Trip</option>
+            <option value="solo">Solo Travel</option>
+            <option value="friends">Friends Trip</option>
+            <option value="business">Business Trip</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="special-requests">Special Requests</label>
+          <textarea id="special-requests" name="special_requests"
+            placeholder="Any special requirements or requests..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="policy-accept" required style="margin-right: 8px;">
+            I agree to the <a href="booking-policy.html" target="_blank"
+              style="color: var(--primary-color); text-decoration: underline;"> Booking Policy & Terms</a>
+          </label>
+        </div>
+
+        <div class="book-buttons">
+          <button type="button" class="btn-continue" onclick="proceedToPayment()">Continue</button>
+          <button type="submit" class="btn-primary">Book Now</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div id="chat-icon" onclick="toggleChat()">
+    <img src="././ExploreUP/photo/pikachu.jpg" alt="Chat Assistant" class="chat-img">
+    <span class="tooltip">✨ Chat with us!</span>
+  </div>
+  <div id="chat-box">
+    <div class="chat-head">
+      <h4>🤖 UP Travel Assistant</h4>
+      <button class="close-btn" onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-body" id="chat-body">
+      <div class="bot-msg">👋 Welcome to Know U.P.! I'm your travel assistant. How can I help you explore the
+        incredible heritage of Uttar Pradesh today?</div>
+      <div class="options">
+        <button onclick="showResponse('What is the best time to visit UP?')">🌤️ Best time to visit</button>
+        <button onclick="showResponse('How do I get around UP?')">🚌 Transportation guide</button>
+        <button onclick="showResponse('What should I pack for my trip?')">🎒 Packing checklist</button>
+        <button onclick="showResponse('Are there budget-friendly options?')">💰 Budget travel tips</button>
+        <button onclick="showResponse('What local food should I try?')">🍛 Must-try cuisine</button>
+        <button onclick="showResponse('How can I contact customer support?')">📞 Customer support</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

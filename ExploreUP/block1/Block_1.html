@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Religious Culture</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f5f8fa;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #253047;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: black;
+      color: white;
+      width: 100%;
+      padding: 15px 20px;
+    }
+
+    .header-cont {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .left {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .left a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .right {
+      display: flex;
+      gap: 20px;
+    }
+
+    .right a {
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .right a:hover {
+      color: #ffcc00;
+      font-weight: bold;
+      text-decoration: wavy underline;
+      text-underline-offset: 2px;
+    }
+
+    .info0 {
+      text-align: center;
+      padding: 16px;
+      background: linear-gradient(135deg, #5b89c9, #716b75);
+    }
+
+    .info0 h1 {
+      color: #bebcbc;
+      font-size: 44px;
+      margin-bottom: 20px;
+    }
+
+    .info0 p {
+      color: #1c1c1c;
+      font-size: 16px;
+      margin-bottom: 20px;
+      margin-left: 30px;
+      margin-right: 30px;
+    }
+
+    section {
+      max-width: 1127px;
+      margin: 50px auto;
+      padding: 35px;
+      background: #fff;
+      box-shadow: 0 2px 14px rgba(120, 120, 120, 0.09);
+      border-radius: 70px;
+
+    }
+
+    h2 {
+      color: #0d7784;
+      font-size: 2.1rem;
+      border-bottom: 2.5px solid #26a69a;
+      padding-bottom: 7px;
+      margin-bottom: 23px;
+    }
+
+    .topic {
+      margin-bottom: 42px;
+    }
+
+    .img-row {
+      display: flex;
+      gap: 26px;
+      margin-bottom: 15px;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .img-row img {
+      flex: 1 1 0;
+      max-width: 240px;
+      max-height: 265px;
+      min-width: 120px;
+      min-height: 120px;
+      object-fit: cover;
+      border-radius: 13px;
+      background: #f2eee3;
+      box-shadow: 0 1px 11px rgba(180, 110, 15, 0.07);
+      border: 2.2px solid #ecebe7;
+      transition: transform 0.8s ease;
+    }
+
+    .img-row img:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 13px;
+      background-color: #eee;
+      font-size: 13px;
+      color: #434343;
+      border-radius: 10px 10px 0 0;
+      margin-top: 32px;
+    }
+
+    #userProfile {
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+      color: #0b6;
+      background: #e7f9ed;
+      display: none;
+    }
+
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #333;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    #toggleTheme {
+      position: fixed;
+      bottom: 80px;
+      right: 25px;
+      background: #0077aa;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .dark-theme {
+      background: #1d1d1d;
+      color: #fff;
+    }
+
+    .dark-theme header,
+    .dark-theme section {
+      background: #2a2a2a;
+      color: #f1f1f1;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .nav-buttons a {
+      background: #4a90e2;
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      font-size: 16px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .nav-buttons a:hover {
+      background: #357ABD;
+    }
+
+    /* Tooltip */
+    .nav-buttons a::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: #fff;
+      padding: 5px 8px;
+      font-size: 12px;
+      border-radius: 4px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+
+    .nav-buttons a:hover::after {
+      opacity: 1;
+    }
+  </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header>
+    <div class="header-cont">
+      <div class="left">
+        <a href="../../index.html">Explore UP</a>
+      </div>
+
+      <nav class="right">
+        <a href="../../index.html">Home</a>
+        <a href="../exploreUP.html">U.P</a>
+        <a href="../about.html">About</a>
+      </nav>
+    </div>
+  </header>
+  <div class="info0">
+    <h1>Religious Culture</h1>
+    <p>Uttar Pradesh stands as the spiritual and religious heartland of India, reflecting the country’s deep-rooted
+      pluralistic traditions. The state's landscape is interwoven with sacred sites, pilgrimage routes, ancient
+      shrines, and historical centers tied to major world religions. Each city and town in UP tells a story of
+      divine legends, saints, emperors, and sages, making it a living museum of India's spiritual heritage.</p>
+  </div>
+
+  <section>
+    <h2>Hinduism</h2>
+    <div class="topic">
+      <p class="info"><b>Hinduism:</b> UP holds unparalleled significance in Hinduism, being home to many of its
+        holiest cities:</p>
+      <div class="img-row">
+        <img src="../block1/2.jpg" alt="city view">
+        <img src="../block1/7.jpg" alt="city view">
+        <img src="../block1/16.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Ayodhya:</b> Revered as the birthplace of Lord Ram, Ayodhya is one of the seven holiest
+        cities (Sapta Puri) in Hindu tradition. It is a major pilgrimage site, especially after the consecration
+        of the Ram Mandir.</p>
+      <div class="img-row">
+        <img src="../block1/1.jpg" alt="city view">
+        <img src="../block1/3.jpg" alt="city view">
+        <img src="../block1/4.jpg" alt="city view">
+        <img src="../block1/2.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Varanasi (Kashi):</b> Regarded as the spiritual capital of India and one of the oldest
+        continuously inhabited cities in the world, Varanasi is sacred to Lord Shiva. Pilgrims come here to
+        bathe in the Ganges and perform last rites, believing it offers moksha (liberation).</p>
+      <div class="img-row">
+        <img src="../block1/5.jpg" alt="city view">
+        <img src="../block1/6.jpg" alt="city view">
+        <img src="../block1/17.jpg" alt="city view">
+        <img src="../block1/18.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Mathura-Vrindavan:</b> These twin towns are associated with the life and leelas (divine
+        plays) of Lord Krishna. They are central to the Bhakti movement and attract millions during Janmashtami
+        and Holi.</p>
+      <div class="img-row">
+        <img src="../block1/8.jpg" alt="city view">
+        <img src="../block1/9.jpg" alt="city view">
+        <img src="../block1/19.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Prayagraj (Allahabad):</b> Known for the confluence (Sangam) of the Ganga, Yamuna, and
+        mythical Saraswati rivers, Prayagraj hosts the Kumbh Mela, the largest human gathering on Earth for
+        spiritual purification.</p>
+      <div class="img-row">
+        <img src="../block1/10.jpg" alt="city view">
+        <img src="../block1/11.jpg" alt="city view">
+        <img src="../block1/20.jpg" alt="city view">
+        <img src="../block1/21.jpg" alt="city view">
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Buddhism</h2>
+    <div class="topic">
+      <p class="info"><b>Buddhism:</b> Uttar Pradesh played a vital role in the life and mission of Gautama
+        Buddha, and many sites here are part of the Buddhist pilgrimage circuit:</p>
+      <div class="img-row">
+        <img src="../block1/22.jpg" alt="city view">
+        <img src="../block1/23.jpg" alt="city view">
+        <img src="../block1/24.jpg" alt="city view">
+        <img src="../block1/25.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Sarnath:</b> This is where the Buddha delivered his first sermon, setting the Wheel of
+        Dharma in motion. The Dhamek Stupa and Ashokan Pillar here are iconic.</p>
+      <div class="img-row">
+        <img src="../block1/12.jpg" alt="city view">
+        <img src="../block1/13.jpg" alt="city view">
+        <img src="../block1/26.jpg" alt="city view">
+        <img src="../block1/27.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Kushinagar:</b> It is the sacred site where Buddha attained Mahaparinirvana (final
+        liberation). It houses stupas, a reclining Buddha statue, and international monasteries.</p>
+      <div class="img-row">
+        <img src="../block1/14.jpg" alt="city view">
+        <img src="../block1/15.jpg" alt="city view">
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Islam</h2>
+    <div class="topic">
+      <p class="info"><b>Islam:</b> Islamic traditions in UP are reflected through centuries of cultural
+        evolution, scholarship, and Sufi mysticism:</p>
+      <div class="img-row">
+        <img src="../block1/28.jpg" alt="city view">
+        <img src="../block1/29.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Sufi Shrines & Dargahs:</b> Towns like Bareilly and Lucknow are famous for Dargahs of
+        revered Sufi saints such as Ala Hazrat and others. These places draw devotees from all backgrounds,
+        especially during Urs festivals.</p>
+      <div class="img-row">
+        <img src="../block1/30.jpg" alt="city view">
+        <img src="../block1/31.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Mughal and Indo-Islamic Heritage::</b> Cities like Agra and Fatehpur Sikri showcase
+        magnificent Islamic architecture and artistry. The Taj Mahal, Jama Masjid, and Buland Darwaza are
+        testaments to Mughal patronage of Islamic culture and aesthetics.</p>
+      <div class="img-row">
+        <img src="../block1/32.jpg" alt="city view">
+        <img src="../block1/33.jpg" alt="city view">
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Jainism</h2>
+    <div class="topic">
+      <p class="info"><b>Jainism:</b> Though smaller in population, Jainism has a historic presence in UP:</p>
+      <div class="img-row">
+        <img src="../block1/34.jpg" alt="city view">
+        <img src="../block1/35.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info">Towns like Varanasi, Hastinapur, and Kundalpur are associated with Jain Tirthankaras.</p>
+      <div class="img-row">
+        <img src="../block1/36.jpg" alt="city view">
+        <img src="../block1/37.jpg" alt="city view">
+        <img src="../block1/38.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info">Jain temples with intricate marble work and ancient inscriptions attract pilgrims and
+        scholars alike.</p>
+      <div class="img-row">
+        <img src="../block1/39.jpg" alt="city view">
+        <img src="../block1/40.jpg" alt="city view">
+        <img src="../block1/41.jpg" alt="city view">
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Sikhism</h2>
+    <div class="topic">
+      <p class="info"><b>Sikhism:</b> Sikhism also has meaningful ties to UP:</p>
+      <div class="img-row">
+        <img src="../block1/42.jpg" alt="city view">
+        <img src="../block1/43.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info"><b>Gurudwaras:</b> Gurudwaras in places like Gorakhpur, Lucknow, and Saharanpur commemorate
+        visits by Guru Nanak Dev Ji and other Sikh Gurus.</p>
+      <div class="img-row">
+        <img src="../block1/44.jpg" alt="city view">
+      </div>
+    </div>
+    <div class="topic">
+      <p class="info">Historical events like the 1857 rebellion also saw Sikh contributions in this region.</p>
+      <div class="img-row">
+        <img src="../block1/45.jpg" alt="city view">
+      </div>
+    </div>
+  </section>
+
+
+  <div class="nav-buttons">
+    <a href="../exploreUP.html" data-tooltip="Explore U.P">
+      <i class="fas fa-home"></i>
+    </a>
+    <a href="../block2/Block2.html" data-tooltip="Folk and Performing Arts">
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+
+  <button id="backToTop">↑ Top</button>
+  <button id="toggleTheme">Dark</button>
+
+  <footer>
+    &copy; 2025 Explore UP || Made By Team Rocket
+  </footer>
+
+
+  <script>
+    const topBtn = document.getElementById("backToTop");
+    window.onscroll = () => {
+      topBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    };
+    topBtn.onclick = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    document.getElementById("toggleTheme").onclick = () => {
+      document.body.classList.toggle("dark-theme");
+    };
+  </script>
+</body>
+
+</html>

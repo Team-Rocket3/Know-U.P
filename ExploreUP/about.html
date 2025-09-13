@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - Know U.P</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(200deg, #8000ff 30%, #000000 70%);
+      color: #333;
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav h1 {
+      font-size: 32px;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 10px 15px;
+      border-radius: 25px;
+    }
+
+    .nav a:hover {
+      color: rgba(239, 85, 2, 0.959);
+      transform: scale(1.1);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-section {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 22px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.7s ease, box-shadow 0.9s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-icon {
+      font-size: 48px;
+      color: #667eea;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .card h3 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .card p {
+      color: #666;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .team-section {
+      text-align: center;
+      margin-top: 60px;
+      padding: 40px;
+      background: linear-gradient(135deg, #ff8800 0%, #f55757 100%);
+      border-radius: 20px;
+      color: white;
+    }
+
+    .team-title {
+      font-size: 36px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .team-members {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .member {
+      text-align: center;
+    }
+
+    .member-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 15px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .member-avatar img {
+      mix-blend-mode: multiply;
+      filter: contrast(1.2) brightness(1.1);
+    }
+
+    .member-name {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .member-role {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .cta-section {
+      text-align: center;
+      margin-top: 50px;
+      padding: 40px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-radius: 20px;
+      color: white;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 15px 40px;
+      background: white;
+      color: #667eea;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 18px;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .dark-theme {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    }
+
+    .dark-theme .container {
+      background: rgba(45, 55, 72, 0.95);
+      color: #e2e8f0;
+    }
+
+    .dark-theme .card {
+      background: #4a5568;
+      color: #e2e8f0;
+    }
+
+    .dark-theme .card p {
+      color: #cbd5e0;
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .hero-title {
+        font-size: 36px;
+      }
+
+      .hero-subtitle {
+        font-size: 18px;
+      }
+
+      .container {
+        margin: 20px;
+        padding: 30px 20px;
+      }
+
+      .team-members {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <h1>Know U.P</h1>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="event/festival-calendar.html">Festivals</a>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero-section">
+      <h1 class="hero-title">Welcome to Know U.P</h1>
+      <p class="hero-subtitle">Your gateway to discovering the incredible heritage, culture, and beauty of Uttar Pradesh
+      </p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <i class="fas fa-map-marked-alt card-icon"></i>
+        <h3>Explore Heritage</h3>
+        <p>Discover ancient temples, magnificent monuments, and UNESCO World Heritage sites that tell the story of
+          India's rich past.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-calendar-alt card-icon"></i>
+        <h3>Festivals & Culture</h3>
+        <p>Experience vibrant festivals, traditional arts, and cultural celebrations that make Uttar Pradesh truly
+          special.</p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-route card-icon"></i>
+        <h3>Plan Your Journey</h3>
+        <p>Find the best destinations, book amazing tours, and create unforgettable memories with our curated travel
+          packages.</p>
+      </div>
+    </div>
+
+    <div class="team-section">
+      <h2 class="team-title">Meet Team Rocket</h2>
+      <p>Three passionate BCA students from Mahadev PG College who created this platform to showcase the beauty of Uttar
+        Pradesh.</p>
+
+      <div class="team-members">
+        <div class="member">
+          <div class="member-avatar">
+            <img src="photo/rocket.gif" alt="Rocket"
+              style="width: 50px; height: 50px; object-fit: contain; mix-blend-mode: screen; filter: invert(1);"">
+          </div>
+          <div class=" member-name">Kartik Yadav
+          </div>
+          <div class="member-role">Developer/Designer</div>
+        </div>
+        <div class="member">
+          <div class="member-avatar">
+            <img src="photo/laptop.gif" alt="Laptop"
+              style="width: 50px; height: 50px; object-fit: contain; mix-blend-mode: screen; filter: invert(1);"">
+          </div>
+          <div class=" member-name">Pawan Yadav
+          </div>
+          <div class="member-role">Developer/Designer</div>
+        </div>
+        <div class="member">
+          <div class="member-avatar">
+            <img src="photo/target.gif" alt="Target"
+              style="width: 50px; height: 50px; object-fit: contain; mix-blend-mode: screen; filter: invert(1);"">
+          </div>
+          <div class=" member-name">Keshav Singh
+          </div>
+          <div class="member-role">Developer/Designer</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h2>Start Your U.P Adventure</h2>
+      <p>Ready to explore the incredible state of Uttar Pradesh? Begin your journey today!</p>
+      <a href="../index.html" class="cta-button">Explore Now</a>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
